@@ -1,0 +1,6 @@
+<ng-container *ngIf="moviesList$ | async as moviesList ">
+    <div class="container">
+        <app-movie-list [moviesList]="moviesList"></app-movie-list>
+    </div>
+</ng-container>
+

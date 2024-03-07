@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+<ng-container *ngIf="character$ | async as character">
+    <div class="container">
+        <table class="table">
+            <thead>
+            <tr>
+                <th colspan="3">
+                    <h1 class="display-4 text-center">{{character.name}}</h1>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table align-top">
+                <th scope="row" class="text-nowrap">Birth year</th>
+                <td colspan="2" class="table align-top">{{character.birth_year}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-nowrap">Eye color</th>
+                <td colspan="2" class="table align-top">{{character.eye_color}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-nowrap">Hair color</th>
+                <td colspan="2" class="table align-top">{{character.hair_color}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-nowrap">Height</th>
+                <td colspan="2" class="table align-top">{{character.height}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-nowrap">Gender</th>
+                <td colspan="2" class="table align-top">{{character.gender}}</td>
+            </tr>
+            <tr>
+                <th scope="row" class="text-nowrap">Mass</th>
+                <td colspan="2" class="table align-top">{{character.mass}}</td>
+            </tr>
+            <tr *ngIf="movies$ | async as movies">
+                <th scope="row" class="text-nowrap">Movies</th>
+                <td colspan="2" class="table align-top">
+                    <ul class="list-group">
+                        <li class="list-group-item" *ngFor="let movie of movies">
+                            <a [routerLink]="['/movies/', movie.id]" class="link-primary"> {{ movie.title }} </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-container>
+
+

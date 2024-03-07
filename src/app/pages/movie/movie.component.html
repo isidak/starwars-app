@@ -1,0 +1,43 @@
+<app-navbar></app-navbar>
+<ng-container *ngIf="movie$ | async as movieDetails">
+    <div class="container">
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th colspan="3">
+                    <h1 class="display-4 text-center">{{movieDetails.title}}</h1>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table align-top">
+                <th scope="row">Producer</th>
+                <td colspan="2" class="table align-top">{{movieDetails.producer}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Director</th>
+                <td colspan="2" class="table align-top">{{movieDetails.director}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Release date</th>
+                <td colspan="2" class="table align-top">{{movieDetails.release_date | date}}</td>
+            </tr>
+            <tr>
+                <th scope="row">Opening Crawl</th>
+                <td colspan="2" class="table align-top">{{movieDetails.opening_crawl}}</td>
+            </tr>
+            <tr *ngIf="characters$ | async as characters">
+                <th scope="row">Characters</th>
+                <td colspan="2" class="table align-top">
+                    <ng-container *ngFor="let character of characters; let i = index">
+                        <a [routerLink]="['/characters/', character.id]" class="link-primary d-inline-block me-3 ">
+                            {{ character.name }}<ng-container *ngIf="i + 1 < characters.length">,</ng-container>
+                        </a>
+                    </ng-container>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</ng-container>
+
